@@ -63,12 +63,12 @@ const deleteNote = (id) =>
             'Content-Type': 'application/json',
         },
     })
-        // .then((res) => res.json())
-        // .then((data) => data)
-        // .catch((error) => {
-        //     console.error('Error:', error);
+// .then((res) => res.json())
+// .then((data) => data)                                                                                                                                   
+// .catch((error) => {
+//     console.error('Error:', error);
 
-        // });
+// });
 
 const renderActiveNote = () => {
     hide(saveNoteBtn);
@@ -189,6 +189,7 @@ const renderNoteList = async (notes) => {
     if (window.location.pathname === '/notes') {
         noteListItems.forEach((note) => noteList[0].append(note));
     }
+   
 };
 
 // Gets notes from the db and renders them to the sidebar
