@@ -37,15 +37,17 @@ app.get('/notes/:id', (req, res) => {
   return res.json('No match found');
 });
 
-// app.delete('/notes/:id', (req, res) => {
-//   for (let i = 0; i < noteData.length; i++) {
-//     if (requestedID === noteData[i].id) {
-//       return res.json(noteData[i]);
-//     }
-//   }
+app.delete('/notes/:id', (req, res) => {
+  const requestedID = req.params.id;
+  console.log(requestedID)
+  for (let i = 0; i < noteData.length; i++) {
+    if (requestedID === noteData[i].id) {
+      noteData.remove(requestedID)
+    }
+  }
 
 
-// });
+ });
 
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)

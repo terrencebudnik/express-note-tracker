@@ -33,4 +33,16 @@ fb.post('/', (req, res) => {
   }
 });
 
+fb.delete('/:id', (req, res) => {
+  let id = req.params.id;
+  // get all data from notes.db
+  // filter out the clicked note to the id 
+  // remove selected object with the same id
+  // restore all the notes data to notes.json 
+  // send response to front-end  
+  
+  res.json("This route is incomplete")
+})
+  
+
 module.exports = fb;
