@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const api = require('./routes/index.js');
+const noteData = require('./db/notes.json');
 
 const app = express();
 const PORT = 3001;
@@ -19,6 +20,32 @@ app.get('/', (req, res) =>
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
+
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/db/notes.json'))
+);
+
+
+app.get('/notes/:id', (req, res) => {
+  const requestedID = req.params.id;
+  for (let i = 0; i < noteData.length; i++) {
+    if (requestedID === noteData[i].id) {
+      return res.json(noteData[i]);
+    }
+  }
+
+  return res.json('No match found');
+});
+
+// app.delete('/notes/:id', (req, res) => {
+//   for (let i = 0; i < noteData.length; i++) {
+//     if (requestedID === noteData[i].id) {
+//       return res.json(noteData[i]);
+//     }
+//   }
+
+
+// });
 
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
