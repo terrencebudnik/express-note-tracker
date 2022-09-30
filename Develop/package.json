@@ -1,14 +1,25 @@
 {
-  "name": "note-taker",
+  "name": "express-note-tracker",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrencebudnik/express-note-tracker.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/terrencebudnik/express-note-tracker/issues"
+  },
+  "homepage": "https://github.com/terrencebudnik/express-note-tracker#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.18.1",
+    "uuid": "^9.0.0"
   }
 }
