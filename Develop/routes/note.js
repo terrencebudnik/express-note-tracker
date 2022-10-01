@@ -1,23 +1,23 @@
-const fb = require('express').Router();
+const router = require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 
-fb.get('/', (req, res) => 
+router.get('/', (req, res) =>
   readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)))
 );
 
 
-fb.post('/', (req, res) => {
-  
+router.post('/', (req, res) => {
+
   const { title, text } = req.body;
 
- 
+
   if (title && text) {
     const newNote = {
       title,
       text,
-      id:uuidv4()
+      id: uuidv4()
     };
 
     readAndAppend(newNote, './db/notes.json');
@@ -33,16 +33,15 @@ fb.post('/', (req, res) => {
   }
 });
 
-fb.delete('/:id', (req, res) => {
-  let id = req.params.id;
-  // get all data from notes.db
-  // filter out the clicked note to the id 
-  // remove selected object with the same id
-  // restore all the notes data to notes.json 
-  // send response to front-end  
-  
-  res.json("This route is incomplete")
-})
-  
+router.delete('/:id', (req, res) => {
+  readFromFile('./db/notes.json').then((data) => res.json(JSON.parse(data)))
+    const requestedID = req.params.id;
+    for (let i = 0; i < data.length; i++) {
+      if (requestedID != data[i].id) {
+        writeToFile('./db/notes.json', data);
+      }
+    }
+});
 
-module.exports = fb;
+
+module.exports = router;
